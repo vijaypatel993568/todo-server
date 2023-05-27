@@ -1,0 +1,12 @@
+const express = require("express")
+const app = express()
+require("./dbConnect")
+const userRoute = require("./routes/userRoute")
+const todoDataRoute = require("./routes/todoDataRoute")
+
+app.use(express.json())
+const dotenv = require("dotenv")
+dotenv.config()
+app.use("/api/user", userRoute)
+app.use("/api/todo-data", todoDataRoute)
+app.listen(8000, () => console.log("server is running at port 8000"))
